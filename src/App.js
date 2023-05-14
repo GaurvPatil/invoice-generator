@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import Container from 'react-bootstrap/Container';
-import InvoiceForm from './components/InvoiceForm';
+import React from "react";
+import "./App.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import InvoiceForm from "./components/InvoiceForm";
+import InvoiceList from "./components/InvoiceList";
+import EditInvoice from "./components/EditInvoice";
 
-class App extends Component {
-  render() {
+const App = () => {
   return (
-    <div className="App d-flex flex-column align-items-center justify-content-center w-100">
-      <Container>
-        <InvoiceForm/>
-      </Container>
-    </div>
+    <>
+      <Router>
+        <Routes>
+          <Route path="/" element={<InvoiceList />} exact />
+          <Route path="/createinvoice" element={<InvoiceForm />} />
+          <Route path="/editInvoice/:id" element={<EditInvoice />} />
+        </Routes>
+      </Router>
+    </>
   );
-}}
+};
 
 export default App;
